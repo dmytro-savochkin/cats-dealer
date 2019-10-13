@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-2 col-md-offset-5">
+    <%= form_tag(best_deal_cats_path,
+                 method: :get,
+                 class: 'form-horizontal center best-deal-form') do %>
+        <p>
+          Select cat type:<br/>
+          <%= select_tag('name',
+                         options_for_select(cat_unique_keys(@resources, :name))) %>
+        </p>
+        <p>
+          Select your location:<br/>
+          <%= select_tag('location',
+                         options_for_select(cat_unique_keys(@resources, :location))) %>
+        </p>
+        <div>
+          <%= submit_tag 'Send request', class: 'btn btn-default' %>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-striped cats">
+      <thead>
+      <tr>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Location</th>
+        <th>Image</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @resources.each do |cat| %>
+        <tr>
+          <td><%= cat['name'] %></td>
+          <td><%= cat['price'] %></td>
+          <td><%= cat['location'] %></td>
+          <td><%= image_tag(cat['image'], width: '150px') %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

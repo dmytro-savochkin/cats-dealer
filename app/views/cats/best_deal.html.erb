@@ -1,0 +1,27 @@
+<% if @resource.present? %>
+  <p>
+    Best price for your location:
+  </p>
+  <table class="table table-striped cats">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Price</th>
+      <th>Location</th>
+      <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="name"><%= @resource['name'] %></td>
+      <td class="price"><%= @resource['price'] %></td>
+      <td class="location"><%= @resource['location'] %></td>
+      <td class="image"><%= image_tag(@resource['image'], width: '150px') %></td>
+    </tr>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    Sorry, no cats for your location.
+  </p>
+<% end %>
